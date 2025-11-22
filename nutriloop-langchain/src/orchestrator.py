@@ -5,8 +5,8 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.tools import Tool
 
 from langchain_openai import ChatOpenAI
-from langchain.agents import AgentExecutor
-from langchain_classic.llms import OpenAI  # tienilo solo se lo usi davvero
+from langchain_classic.agents import AgentExecutor
+#from langchain_classic.llms import OpenAI  # tienilo solo se lo usi davvero
 
 class Orchestrator:
     def __init__(self, llm_client, nutrition_agent, safety_agent, flow):

@@ -1,7 +1,7 @@
 from langchain_core.output_parsers import BaseOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_classic.chains import LLMChain
-from langchain.agents import AgentExecutor
+from langchain_classic.agents import AgentExecutor
 from langchain_core.tools import Tool
 from langchain_classic.memory import ConversationBufferMemory
 

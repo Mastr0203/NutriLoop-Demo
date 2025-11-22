@@ -1,6 +1,6 @@
 from langchain_classic.chains import LLMChain, SequentialChain
 from langchain_core.prompts import PromptTemplate
-from langchain.agents import AgentExecutor  # ancora valido nello stack moderno
+from langchain_classic.agents import AgentExecutor  # ancora valido nello stack moderno
 from langgraph.graph import StateGraph       # equivale al vecchio "LangGraph"
 
 from orchestrator import Orchestrator
