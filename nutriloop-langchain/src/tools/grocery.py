@@ -1,6 +1,6 @@
-from langchain.agents import Tool
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
+from langchain_core.tools import Tool
+from langchain_classic.chains import LLMChain
+from langchain_core.prompts import PromptTemplate
 
 def create_grocery_order_tool() -> Tool:
     """Creates a tool for placing grocery orders."""

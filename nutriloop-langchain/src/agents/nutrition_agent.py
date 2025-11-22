@@ -1,7 +1,8 @@
-from langchain import LLMChain
-from langchain.prompts import PromptTemplate
-from langchain.agents import AgentExecutor, Tool
-from langchain.memory import ConversationBufferMemory
+from langchain_classic.chains import LLMChain
+from langchain_core.prompts import PromptTemplate
+from langchain.agents import AgentExecutor
+from langchain_core.tools import Tool
+from langchain_classic.memory import ConversationBufferMemory
 
 class NutritionAgent:
     def __init__(self, llm_client):

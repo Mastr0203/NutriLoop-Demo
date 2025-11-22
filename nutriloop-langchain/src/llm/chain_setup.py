@@ -1,6 +1,7 @@
-from langchain import LLMChain
-from langchain.prompts import PromptTemplate
-from langchain.chains import SequentialChain
+from langchain_classic.chains import LLMChain, SequentialChain
+from langchain_core.prompts import PromptTemplate
+
+from .client import LLMClient
 
 def setup_chains():
     # Define prompt templates for different tasks

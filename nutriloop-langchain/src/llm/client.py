@@ -1,10 +1,13 @@
-from langchain import OpenAI
-from langchain.llms import LLM
+from langchain_openai import ChatOpenAI
+
 
 class LLMClient:
-    def __init__(self, model_name: str = "gpt-3.5-turbo"):
-        self.llm = OpenAI(model_name=model_name)
+    def __init__(self, model_name: str = "gpt-4o-mini", temperature: float = 0):
+        self.llm = ChatOpenAI(
+            model=model_name,
+            temperature=temperature
+        )
 
     def generate_response(self, prompt: str) -> str:
-        response = self.llm(prompt)
-        return response.strip()
+        response = self.llm.invoke(prompt)
+        return response.content.strip()

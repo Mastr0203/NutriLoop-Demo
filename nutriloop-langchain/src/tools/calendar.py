@@ -1,8 +1,9 @@
-from langchain.tools import Tool
+from langchain_core.tools import Tool
 from langchain.agents import AgentExecutor
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-from langchain.memory import ConversationBufferMemory
+from langchain_core.prompts import PromptTemplate
+
+from langchain_classic.chains import LLMChain
+from langchain_classic.memory import ConversationBufferMemory
 
 def schedule_appointment(date: str, time: str, description: str) -> str:
     """Schedule an appointment in the calendar."""
