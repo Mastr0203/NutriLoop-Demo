@@ -1,8 +1,9 @@
 from langchain_classic.chains import LLMChain
 from langchain_core.prompts import PromptTemplate
 
+
 class SafetyAgent:
-    def __init__(self, llm_chain: LLMChain):
+    def __init__(self, llm_chain: LLMChain | None):
         self.llm_chain = llm_chain
 
     def assess_goal_safety(self, patient_profile: dict, goal: dict) -> str:
@@ -17,7 +18,13 @@ class SafetyAgent:
                 "Is this goal safe?"
             )
         )
-        
+
+        if self.llm_chain is None:
+            return (
+                "Safety assessment unavailable without OPENAI_API_KEY. "
+                "Provide an API key for AI-generated safety checks."
+            )
+
         messages = prompt.format(patient_profile=patient_profile, goal=goal)
         response = self.llm_chain.run(messages)
         return response.strip()

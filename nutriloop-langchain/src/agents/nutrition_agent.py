@@ -1,8 +1,7 @@
 from langchain_classic.chains import LLMChain
 from langchain_core.prompts import PromptTemplate
-from langchain_classic.agents import AgentExecutor
-from langchain_core.tools import Tool
 from langchain_classic.memory import ConversationBufferMemory
+
 
 class NutritionAgent:
     def __init__(self, llm_client):
@@ -18,11 +17,19 @@ class NutritionAgent:
                 "Generate a meal plan for 7 days with breakfast, lunch, and dinner."
             )
         )
-        self.chain = LLMChain(llm=self.llm_client, prompt=self.prompt_template)
+        self.chain = LLMChain(llm=self.llm_client, prompt=self.prompt_template) if llm_client else None
 
     def generate_meal_plan(self, preferences, allergies, budget):
         self.memory.add_user_message(f"Preferences: {preferences}, Allergies: {allergies}, Budget: {budget}")
-        meal_plan = self.chain.run(preferences=preferences, allergies=allergies, budget=budget)
+
+        if self.chain is None:
+            meal_plan = (
+                "Sample meal plan unavailable without OPENAI_API_KEY. "
+                "Provide an API key for AI-generated content."
+            )
+        else:
+            meal_plan = self.chain.run(preferences=preferences, allergies=allergies, budget=budget)
+
         self.memory.add_assistant_message(meal_plan)
         return meal_plan
 
