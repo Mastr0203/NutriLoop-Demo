@@ -1,0 +1,15 @@
+[tool]
+name = "nutriloop-langchain"
+version = "0.1.0"
+description = "A project for personalized nutrition using LangChain and LangGraph."
+authors = ["Your Name <youremail@example.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+langchain = "^0.0.1"
+langgraph = "^0.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
