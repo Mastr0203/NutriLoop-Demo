@@ -7,8 +7,7 @@ from orchestrator import Orchestrator
 
 
 def main():
-    llm_client = LLMClient()
-    llm = llm_client.llm
+    llm_client = LLMClient().llm
 
     safety_prompt = PromptTemplate(
         input_variables=["patient_profile", "goal"],
@@ -21,9 +20,9 @@ def main():
             "Is this goal safe?"
         ),
     )
-    safety_chain = LLMChain(llm=llm, prompt=safety_prompt) if llm else None
+    safety_chain = LLMChain(llm=llm_client, prompt=safety_prompt)
 
-    nutrition_agent = NutritionAgent(llm)
+    nutrition_agent = NutritionAgent(llm_client)
     safety_agent = SafetyAgent(safety_chain)
 
     orchestrator = Orchestrator(llm_client, nutrition_agent, safety_agent)
